@@ -1,9 +1,13 @@
 {
-    "image":"mcr.microsoft.com/devcontainers/javascript-node:20",
-    "postCreateCommand": "yarn install",
-    "extensions": [
+  "name": "Web App",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "postCreateCommand": "yarn install",
+  "customizations": {
+    "vscode": {
+      "extensions": [
         "codelounge.tako",
         "hasel-alakmeh.telemetry-activity-tracker"
-    ],
-    "hostRequirements": { "cpus": 2, "memory": "4gb", "storage": "10gb" }
+      ]
+    }
+  }
 }
