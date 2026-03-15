@@ -1,13 +1,13 @@
 "use server"
 
 import { PlatformUserCreateInput } from "@enterprise-commerce/core/platform/types"
-import { cookies } from "next/headers"
-import { storefrontClient } from "clients/storefrontClient"
 import internalClient from "clients/internalClient"
+import { storefrontClient } from "clients/storefrontClient"
 import { COOKIE_ACCESS_TOKEN } from "constants/index"
+import { cookies } from "next/headers"
 
 export async function registerUser({ email, password }: { email: string; password: string }) {
-  const user = await storefrontClient.createUser({ email, password }) // todo: replace this with our client
+  const user = await internalClient.registerUser({ email, password }) // todo: replace this with our client
   return user
 }
 

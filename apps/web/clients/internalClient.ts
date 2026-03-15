@@ -1,10 +1,14 @@
-import { PlatformAccessToken, PlatformUserCreateInput, PlatformUser } from '@enterprise-commerce/core/platform/types';
+import { PlatformUser, PlatformUserCreateInput } from '@enterprise-commerce/core/platform/types';
 import axios from 'axios';
-import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 
 const registerUser = async (input: PlatformUserCreateInput): Promise<Pick<PlatformUser, "id"> | undefined | null> => {
-  // ToDo: Implement the registerUser function
+  try {
+    const data = await axios.post('http://localhost:3001/register', input);
+    return { id: data.data.userId };
+  } catch (error) {
+    console.error(error);
+  }
   return null
 };
 
